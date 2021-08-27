@@ -1,0 +1,101 @@
+Tables:
+
+Teacher:
+
+CREATE TABLE Teachers (
+    TeacherID int NOT NULL PRIMARY KEY,
+    Teachername varchar(255)
+    );
+
+INSERT INTO Teachers (TeacherID, Teachername)
+VALUES (1, 'prasanth');
+
+INSERT INTO Teachers (TeacherID, Teachername)
+VALUES (2, 'ronaldo');
+
+INSERT INTO Teachers (TeacherID, Teachername)
+VALUES (3, 'emily');
+
+INSERT INTO Teachers (TeacherID, Teachername)
+VALUES (4, 'messi');
+
+INSERT INTO Teachers (TeacherID, Teachername)
+VALUES (5, 'parvatala');
+
+INSERT INTO Teachers (TeacherID, Teachername)
+VALUES (6, 'justin');
+
+INSERT INTO Teachers (TeacherID, Teachername)
+VALUES (7, 'robin');
+
+
+Subject:
+
+
+
+CREATE TABLE Subjects (
+    SubjectID int NOT NULL PRIMARY KEY,
+    Subjectname varchar(255),
+    TeacherID int,
+    FOREIGN KEY (TeacherID) REFERENCES Teachers(TeacherID)
+    );
+
+INSERT INTO Subjects (SubjectID, Subjectname,TeacherID)
+VALUES (1, 'maths',1);
+
+INSERT INTO Subjects (SubjectID, Subjectname,TeacherID)
+VALUES (2, 'physics',2);
+
+INSERT INTO Subjects (SubjectID, Subjectname,TeacherID)
+VALUES (3, 'biology',4);
+
+INSERT INTO Subjects (SubjectID, Subjectname,TeacherID)
+VALUES (4, 'programmig',3);
+
+INSERT INTO Subjects (SubjectID, Subjectname,TeacherID)
+VALUES (5, 'english',6);
+
+
+INSERT INTO Subjects (SubjectID, Subjectname,TeacherID)
+VALUES (6, 'spain',5);
+
+INSERT INTO Subjects (SubjectID, Subjectname,TeacherID)
+VALUES (7, 'french',1);
+
+INSERT INTO Subjects (SubjectID, Subjectname,TeacherID)
+VALUES (8, 'ruby',7);
+
+INSERT INTO Subjects (SubjectID, Subjectname,TeacherID)
+VALUES (9, 'sports',4);
+
+INSERT INTO Subjects (SubjectID, Subjectname,TeacherID)
+VALUES (10, 'yoga',6);
+
+
+
+Classes:
+
+CREATE TABLE Classes (
+    ClassID int NOT NULL PRIMARY KEY,
+    Classname varchar(255),
+    TeacherID int,
+    FOREIGN KEY (TeacherID) REFERENCES Teachers(TeacherID)
+    );
+    
+INSERT INTO Classes (ClassID, Classname,TeacherID)
+VALUES (1, 'first class',6);
+
+INSERT INTO Classes (ClassID, Classname,TeacherID)
+VALUES (2, 'second class',5);
+
+INSERT INTO Classes (ClassID, Classname,TeacherID)
+VALUES (3, 'third',4);
+
+INSERT INTO Classes (ClassID, Classname,TeacherID)
+VALUES (4, 'lkg class',3);
+
+INSERT INTO Classes (ClassID, Classname,TeacherID)
+VALUES (5, 'ukg class',2);
+
+INSERT INTO Classes (ClassID, Classname,TeacherID)
+VALUES (6, 'preprimary class',1);
