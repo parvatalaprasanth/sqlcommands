@@ -1,0 +1,68 @@
+* Fetch all data from teacher table
+     select * from teachers
+* Add 2 new rows to Subjects
+      INSERT INTO Subjects (SubjectID, Subjectname,TeacherID)
+      VALUES (11, 'compuets',2);
+
+      INSERT INTO Subjects (SubjectID, Subjectname,TeacherID)
+      VALUES (12, 'electronics',3);
+
+* Delete 1 from Classes table
+      DELETE FROM Classes WHERE classid=6;
+* Update 2 columns in teachers table
+      UPDATE Teachers
+      SET teachername = 'Alfred Schmidt'
+      WHERE teacherid = 7;
+
+      UPDATE Teachers
+      SET teachername = 'hitler'
+      WHERE teacherid = 3    
+
+* Add new column age -to teacher table
+      ALTER TABLE Teachers
+      ADD age int;
+      
+        (populating):UPDATE Teachers
+                        SET age=27
+                        WHERE teacherid = 1
+      
+                  UPDATE Teachers
+                        SET age=33
+                        WHERE teacherid = 3
+
+                  UPDATE Teachers
+                        SET age=30
+                        WHERE teacherid = 6
+* Fetch all classes and respective class teacher’s name and age
+        select c.classname,t.teachername,t.age from classes c inner join teachers t on c.teacherid=t.teacherid
+        
+* Fetch teachers, their subjects (a teacher can handle multiple subjects)
+        select t.teachername,s.subjectname from subjects s left outer join teachers t on s.teacherid=t.teacherid
+* Add another table for teachers address
+        CREATE TABLE Address (
+    addressid int NOT NULL PRIMARY KEY,
+    city varchar(255),
+    state varchar(255),
+    country varchar(255),
+    TeacherID int,
+    FOREIGN KEY (TeacherID) REFERENCES Teachers(TeacherID)
+    );
+
+    INSERT INTO Address (addressid, city,state,country,TeacherID)
+    VALUES (1, 'hyderabad','telengana','india',1);
+
+    INSERT INTO Address (addressid, city,state,country,TeacherID)
+    VALUES (2, 'port','andaman','india',2);
+
+    INSERT INTO Address (addressid, city,state,country,TeacherID)
+    VALUES (3, 'kochin','kerala','india',3);
+
+    INSERT INTO Address (addressid, city,state,country,TeacherID)
+    VALUES (4, 'chennai','tamil nadu','india',4);
+
+    INSERT INTO Address (addressid, city,state,country,TeacherID)
+    VALUES (5, 'mumbai','maharastra','india',5);
+* Fetch all classes and respective class teacher’s name, age and address
+    select c.classname,t.teachername,a.city,a.state,a.country from classes c inner join teachers t on c.teacherid=t.teacherid 
+    left outer join address a on a.teacherid=t.teacherid
+* Read about joins and other basic db terminologies.
